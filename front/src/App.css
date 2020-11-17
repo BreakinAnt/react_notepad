@@ -1,0 +1,117 @@
+* {
+  user-select: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+header {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+}
+
+body {
+  background-color:#194d7e;
+  height: 100%;
+}
+
+#root {
+  height: AUTO;
+}
+
+.user-body {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.toolbar a{
+  text-decoration: none;
+  color: rgb(248, 248, 248);
+  padding: 15px;
+}
+
+.toolbar a:hover{
+  transition-duration: 0.5s;
+  background-color:#fdfdfd;
+  color: #195294;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  color: rgb(248, 248, 248);
+  background-color:#194d7e;
+  width: 100%;
+  align-items: center;
+}
+
+.app-title {
+  padding-left: 15px;
+  margin-right: auto;
+}
+
+.app-options {
+  display: flex;
+  flex-direction: row;
+  padding-right: 15px;
+}
+
+.painel-list {
+  height: 100%;
+  background-color:#194d7e;
+}
+/* * {
+  user-select: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  background-color:#dcfce7;
+}
+
+.toolbar {
+  z-index: 5;
+  position: fixed;
+  background-color:#60db89;
+  display: flex;
+  padding: 5px;
+  width: 100%;
+  height: 31px;
+}
+
+.toolbar .app-title {
+  padding-left: 15px;
+  margin-right: auto;
+}
+
+
+.toolbar a{
+  text-decoration: none;
+  color: black;
+  padding: 15px;
+}
+
+.toolbar a:hover{
+  background-color:#79ffa8;
+  color: #22974b;
+}
+
+.userBody {
+  z-index: 4;
+  align-content: space-between;
+  display: flex;
+  flex-flow: row;
+  min-height: 97vh;
+}
+
+@media screen and (max-width: 375){
+  .toolbar{
+   display: none;
+  }
+} */

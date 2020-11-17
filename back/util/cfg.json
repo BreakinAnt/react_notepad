@@ -1,0 +1,8 @@
+{
+    "serverPort":3001,
+    "databaseName":"app_react_notepad",
+    "databaseUser":"root",
+    "databasePassword":"admin",
+    "databaseHost":"localhost",
+    "databasePort":3306
+ }

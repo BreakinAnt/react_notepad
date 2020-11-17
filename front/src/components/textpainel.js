@@ -19,6 +19,7 @@ class Textpainel extends Component{
     }
 
     render(){
+        const noteDate = new Date(this.state.note.updatedAt);
         let note = "";
         if(this.state.note.id){
             note = <React.Fragment>
@@ -26,15 +27,16 @@ class Textpainel extends Component{
                 <p id="note-text">{this.state.note.text}</p>
                 <div id="note-bottom">
                     <p>{this.state.note.author}</p>
-                    <p>{this.state.note.date}</p>
+                    <p>{noteDate.getDate()}/{noteDate.getMonth()}/{noteDate.getFullYear()}</p>
                 </div>
             </React.Fragment>;            
         }
 
-
         return(
             <div className="text-painel" onClick={this.props.clickedText}>
-                {note}
+                <div className="text-note">
+                    {note}
+                </div>
             </div>
         )
     }

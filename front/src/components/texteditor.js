@@ -52,9 +52,11 @@ class Texteditor extends Component{
                 <div className="editor-popup" id={this.state.currentStyle} onClick={this.onChangeEditorPop.bind(this)}>
                     <div className="editor-text">
                     <textarea rows="10" cols="30" form="editor-form" value={this.state.note.text} onChange={e => this.onTodoChange(e.target.value)}></textarea>
-                        <form id="editor-form">
-                            <input type="submit" onClick={this.onSubmitEdit.bind(this)}/>
-                        </form>
+                        <div className="editor-btns">
+                            <form id="editor-form">
+                                <input type="submit" onClick={this.onSubmitEdit.bind(this)}/>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

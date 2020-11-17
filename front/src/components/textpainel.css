@@ -1,0 +1,55 @@
+.text-painel {
+    background-color: #d0d4ff;
+    width: 100%;
+}
+
+.text-note {
+    background-color: #d0d4ff;
+    padding: 15px;
+    padding-top: 50px;
+    position: fixed;
+    width: 76%;
+}
+
+.text-painel #note-bottom{
+    color: #807e7e;
+    font-style: italic;
+    display: flex;
+}
+
+#note-bottom p {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-painel p{
+    padding-top: 5px;
+}
+
+.text-painel #note-title{
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+} 
+
+/* .text-painel {
+    top: 5vh;
+    left: 25vh;
+    bottom: 0vh;
+    right: 0;
+    align-content: space-around;
+    position: fixed;
+    background-color: #fafafa;
+    padding: 0px 15px 15px;
+}
+
+.text-painel textarea{
+    resize: none;
+    overflow: auto;
+    border-style: none;  
+    height: 100%;
+    width: 100%; 
+}
+
+
+*/

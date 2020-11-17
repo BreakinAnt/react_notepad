@@ -4,39 +4,26 @@ import React, { Component } from 'react';
 import Notelist from './components/notelist';
 import TextPainel from './components/textpainel';
 import TextEditor from './components/texteditor';
+import api from './services/api';
 
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      list: [
-        {
-          id: 1,
-          title: 'placeholder title a',
-          text: 'placeholder text a',
-          author: 'placeholder author a',
-          date: new Date().toDateString()
-        },
-        {
-          id: 2,
-          title: 'placeholder title b',
-          text: 'placeholder text b',
-          author: 'placeholder author b',
-          date: new Date().toDateString()
-        },
-        {
-          id: 3,
-          title: 'placeholder title c',
-          text: 'placeholder text c',
-          author: 'placeholder author c',
-          date: new Date().toDateString()
-        }
-      ],
-
+      list: [ ],
       selectedNote: false,
-
       editorPop: false
     }
+  }
+
+  componentDidMount(){
+    this.updateList();
+  }
+
+  updateList(){
+    api.get("notes/").then(res => {
+      this.setState({list: res.data});
+    }).catch(err => console.log(err));
   }
 
   onChangeEditor(editorPop){
@@ -66,16 +53,16 @@ class App extends Component{
             <div className="app-title">React Notepad</div>
             <div className="app-options">
               <a href="/">New Notepad</a>
-              <a href="https://github.com/">Source Code</a>
+              <a href="https://github.com/BreakinAnt/react_notepad">Source Code</a>
             </div>
           </div>
         </header>
 
         <TextEditor editorShow={this.state.editorPop} fetchedNote={this.state.selectedNote}/>
 
-        <div className="userBody">
-          <Notelist list={this.state.list} clicked={this.onSelectNote.bind(this)}></Notelist>
-          <TextPainel fetchedNote={this.state.selectedNote} clickedText={this.onChangeEditor.bind(this, this.state.editorPop)}></TextPainel>
+        <div className="user-body">
+            <Notelist list={this.state.list} clicked={this.onSelectNote.bind(this)}></Notelist>
+            <TextPainel fetchedNote={this.state.selectedNote} clickedText={this.onChangeEditor.bind(this, this.state.editorPop)}></TextPainel>
         </div>
       </React.Fragment>
     );
