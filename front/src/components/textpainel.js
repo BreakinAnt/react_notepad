@@ -23,6 +23,7 @@ class Textpainel extends Component{
         if(this.state.note.id){
             const noteDate = new Date(this.state.note.updatedAt);
             note = <React.Fragment>
+                
                 <p id="note-title">{this.state.note.title}</p>
                 <p id="note-text">{this.state.note.text}</p>
                 <div id="note-bottom">

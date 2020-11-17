@@ -1,20 +1,26 @@
 .text-painel {
+    display: flex;
+    justify-content: center;
     background-color: #d0d4ff;
     width: 100%;
 }
 
 .text-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #d0d4ff;
     padding: 15px;
     padding-top: 50px;
     position: fixed;
-    width: 76%;
+    height: 100%;
 }
 
 .text-painel #note-bottom{
     color: #807e7e;
     font-style: italic;
     display: flex;
+    flex-direction: column;
 }
 
 #note-bottom p {
@@ -30,8 +36,8 @@
     text-align: center;
     font-weight: bold;
     border-bottom: 2px solid black;
+    width: 100%;
 } 
-
 /* .text-painel {
     top: 5vh;
     left: 25vh;

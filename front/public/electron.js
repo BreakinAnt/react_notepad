@@ -8,7 +8,7 @@ const isDev = require('electron-is-dev');
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 1400, height: 750, show: false, resizable: false, fullscreen: false});
+  mainWindow = new BrowserWindow({width: 1400, height: 750, show: false, fullscreen: false});
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   mainWindow.on('closed', () => mainWindow = null);
   mainWindow.removeMenu();
