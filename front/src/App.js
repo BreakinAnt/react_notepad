@@ -22,7 +22,9 @@ class App extends Component{
 
   componentDidUpdate(prevProps, prevState){
     if(prevState.list !== this.state.list){
-      this.onSelectNote(this.state.selectedNote.id)
+      if(this.state.selectedNote.id){
+        this.onSelectNote(this.state.selectedNote.id)
+      }
     }
   }
 
