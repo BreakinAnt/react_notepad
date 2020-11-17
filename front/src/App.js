@@ -12,12 +12,18 @@ class App extends Component{
     this.state = {
       list: [ ],
       selectedNote: false,
-      editorPop: false
+      editorPop: false,
     }
   }
 
   componentDidMount(){
     this.updateList();
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.list !== this.state.list){
+      this.onSelectNote(this.state.selectedNote.id)
+    }
   }
 
   updateList(){
@@ -34,14 +40,10 @@ class App extends Component{
   }
 
   onSelectNote(id){
-    const fetchedList = this.state.list.find(val => {
-      if(val.id === id){
-        return val;
-      }
-      return null;
-    })
-    this.setState({
-      selectedNote: fetchedList
+    api.get(`notes/${id}`).then(response => {
+      this.setState({
+        selectedNote: response.data
+      })
     })
   }
 
@@ -58,9 +60,8 @@ class App extends Component{
           </div>
         </header>
 
-        <TextEditor editorShow={this.state.editorPop} fetchedNote={this.state.selectedNote}/>
-
-        <div className="user-body">
+        <TextEditor editorShow={this.state.editorPop} fetchedNote={this.state.selectedNote} updateList={this.updateList.bind(this)}/>
+        <div className="user-body">        
             <Notelist list={this.state.list} clicked={this.onSelectNote.bind(this)}></Notelist>
             <TextPainel fetchedNote={this.state.selectedNote} clickedText={this.onChangeEditor.bind(this, this.state.editorPop)}></TextPainel>
         </div>

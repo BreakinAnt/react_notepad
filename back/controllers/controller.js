@@ -37,13 +37,13 @@ exports.postNote = (req, res, next) => {
 }
 
 exports.putNote = (req, res, next) => {
-    const query = req.query;
+    const fetchedBody = req.body;
 
-    Note.findByPk(query.id)
+    Note.findByPk(fetchedBody.id)
     .then(note => {
-        note.title = query.title;
-        note.text = query.text;
-        note.author = query.author;
+        note.title = fetchedBody.title;
+        note.text = fetchedBody.text;
+        note.author = fetchedBody.author;
         return note.save();
     }).then(val => {
         res.sendStatus(200);

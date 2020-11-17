@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './texteditor.css'
 
+import api from '../services/api';
+
 class Texteditor extends Component{
     constructor(props){
         super(props);
@@ -39,10 +41,10 @@ class Texteditor extends Component{
     }
 
     onSubmitEdit(event){
-        console.log('SUBMITING:')
-        console.log(this.state.note);
-        this.setState({currentStyle: "none"});
-
+        api.put(`notes/`, this.state.note).then(res => {
+            this.props.updateList();
+        });;
+        this.setState({currentStyle: "none"})
         event.preventDefault();
     }
 
