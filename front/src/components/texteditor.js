@@ -43,8 +43,16 @@ class Texteditor extends Component{
     onSubmitEdit(event){
         api.put(`notes/`, this.state.note).then(res => {
             this.props.updateList();
-        });;
+        });
         this.setState({currentStyle: "none"})
+        event.preventDefault();
+    }
+
+    onDeleteEdit(event){
+        api.delete(`notes/${this.state.note.id}`).then(res => {
+            this.props.updateList();
+        });
+        this.setState({currentStyle: "none"});
         event.preventDefault();
     }
 
@@ -56,7 +64,8 @@ class Texteditor extends Component{
                     <textarea rows="10" cols="30" form="editor-form" value={this.state.note.text} onChange={e => this.onTodoChange(e.target.value)}></textarea>
                         <div className="editor-btns">
                             <form id="editor-form">
-                                <input type="submit" onClick={this.onSubmitEdit.bind(this)}/>
+                                <button  type="submit" onClick={this.onSubmitEdit.bind(this)}>EDIT</button>
+                                <button type="delete" onClick={this.onDeleteEdit.bind(this)}>DELETE</button>
                             </form>
                         </div>
                     </div>
