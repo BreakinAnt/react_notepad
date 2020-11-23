@@ -22,7 +22,6 @@ class App extends Component{
 
   componentDidUpdate(prevProps, prevState){
     if(prevState.list !== this.state.list){
-      console.log("on App.componentDidUpate()");
       if(this.state.selectedNote.id){
         this.onSelectNote(this.state.selectedNote.id)
       }

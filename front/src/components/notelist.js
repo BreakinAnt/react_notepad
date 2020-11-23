@@ -18,7 +18,6 @@ class Notelist extends Component{
 
     componentDidUpdate(prevProps){
         if(prevProps.list !== this.props.list){
-            console.log('hi mom');
             this.setState({
                 list: this.props.list
             })

@@ -22,12 +22,12 @@ exports.getNotes = (req, res, next) => {
 }
 
 exports.postNote = (req, res, next) => {
-    const query = req.query;
+    const body = req.body;
 
     Note.create({
-        title: query.title,
-        text: query.text,
-        author: query.author
+        title: body.title,
+        text: body.text,
+        author: body.author
     }).then(val => {
         res.sendStatus(200);
     }).catch(err => {
@@ -57,7 +57,7 @@ exports.putNote = (req, res, next) => {
 exports.deleteNote = (req, res, next) => {
     Note.findByPk(req.params.noteId)
     .then(note => {
-        note.destroy();
+        return note.destroy();
     })
     .then(response => {
         res.sendStatus(200);

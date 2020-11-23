@@ -35,6 +35,7 @@ class Texteditor extends Component{
         this.setState({
                 note:{
                     ...this.state.note,
+                    title: `${val} bosta`,
                     text: val
                 }
         });
@@ -49,7 +50,7 @@ class Texteditor extends Component{
     }
 
     onDeleteEdit(event){
-        api.delete(`notes/${this.state.note.id}`).then(res => {
+        api.get(`notes/delete/${this.state.note.id}`).then(res => {
             this.props.updateList();
         });
         this.setState({currentStyle: "none"});
