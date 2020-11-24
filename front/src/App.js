@@ -55,6 +55,9 @@ class App extends Component{
     })
   }
 
+  redirectGit(){
+    window.location.href = 'https://github.com/BreakinAnt/react_notepad';
+  }
   render(){
     return (
       <React.Fragment>
@@ -63,7 +66,7 @@ class App extends Component{
             <div className="app-title">React Notepad</div>
             <div className="app-options">
               <div onClick={this.createNote.bind(this)}>New Notepad</div>
-              <div href="https://github.com/BreakinAnt/react_notepad">Source Code</div>
+              <div onClick={this.redirectGit}>Source Code</div>
             </div>
           </div>
         </header>
