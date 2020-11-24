@@ -14,7 +14,7 @@
     padding-top: 50px;
     position: fixed;
     height: auto;
-    width: fit-content;
+    width: auto;
 }
 
 .text-painel #note-bottom{
@@ -39,24 +39,3 @@
     border-bottom: 2px solid black;
     width: 100%;
 } 
-/* .text-painel {
-    top: 5vh;
-    left: 25vh;
-    bottom: 0vh;
-    right: 0;
-    align-content: space-around;
-    position: fixed;
-    background-color: #fafafa;
-    padding: 0px 15px 15px;
-}
-
-.text-painel textarea{
-    resize: none;
-    overflow: auto;
-    border-style: none;  
-    height: 100%;
-    width: 100%; 
-}
-
-
-*/
