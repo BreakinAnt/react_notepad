@@ -31,14 +31,35 @@ class Texteditor extends Component{
         }
     }
 
-    onTodoChange(val) {
-        this.setState({
-                note:{
-                    ...this.state.note,
-                    title: `${val} bosta`,
-                    text: val
-                }
-        });
+    onTodoChange(targetName, targetValue) {
+        switch(targetName){
+            case 'text-title':
+                this.setState({
+                    note:{
+                        ...this.state.note,
+                        title: targetValue
+                    }
+                });
+            break;
+            case 'text-note':
+                this.setState({
+                    note:{
+                        ...this.state.note,
+                        text: targetValue
+                    }
+                });
+            break;
+            case 'text-author':
+                this.setState({
+                    note:{
+                        ...this.state.note,
+                        author: targetValue
+                    }
+                });
+            break;
+            default:
+        }
+ 
     }
 
     onSubmitEdit(event){
@@ -50,7 +71,7 @@ class Texteditor extends Component{
     }
 
     onDeleteEdit(event){
-        api.get(`notes/delete/${this.state.note.id}`).then(res => {
+        api.delete(`notes/${this.state.note.id}`).then(res => {
             this.props.updateList();
         });
         this.setState({currentStyle: "none"});
@@ -62,7 +83,9 @@ class Texteditor extends Component{
             <React.Fragment>
                 <div className="editor-popup" id={this.state.currentStyle} onClick={this.onChangeEditorPop.bind(this)}>
                     <div className="editor-text">
-                    <textarea rows="10" cols="30" form="editor-form" value={this.state.note.text} onChange={e => this.onTodoChange(e.target.value)}></textarea>
+                    <input type="text" id="text-title" name="text-title"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} value={this.state.note ? this.state.note.title : 'null'}></input>
+                    <textarea rows="10" cols="30" id="text-note" name="text-note" form="editor-form" value={this.state.note.text} onChange={e => this.onTodoChange(e.target.name, e.target.value)}></textarea>
+                    <input type="text" id="text-author" name="text-author"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} value={this.state.note ? this.state.note.author : 'null'}></input>
                         <div className="editor-btns">
                             <form id="editor-form">
                                 <button  type="submit" onClick={this.onSubmitEdit.bind(this)}>EDIT</button>

@@ -34,6 +34,12 @@ class App extends Component{
     }).catch(err => console.log(err));
   }
 
+  createNote(){
+    api.post("notes/", { author: "Add author name here!", text: "Click here and edit the text!", title: "Add title name here!", createdAt: new Date, updatedAt: new Date}).then(res =>{
+      this.updateList();
+    });
+  }
+
   onChangeEditor(editorPop){
     editorPop ? 
     this.setState({editorPop: false})
@@ -56,7 +62,7 @@ class App extends Component{
           <div className="toolbar">
             <div className="app-title">React Notepad</div>
             <div className="app-options">
-              <a href="/">New Notepad</a>
+              <a onClick={this.createNote.bind(this)}>New Notepad</a>
               <a href="https://github.com/BreakinAnt/react_notepad">Source Code</a>
             </div>
           </div>
