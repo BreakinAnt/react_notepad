@@ -11,7 +11,7 @@ class App extends Component{
     super(props);
     this.state = {
       list: [ ],
-      selectedNote: false,
+      selectedNote: [ ],
       editorPop: false,
     }
   }
@@ -30,12 +30,12 @@ class App extends Component{
 
   updateList(){
     api.get("notes/").then(res => {
-      this.setState({list: res.data});
+      this.setState({list: res.data, selectedNote: []});
     }).catch(err => console.log(err));
   }
 
   createNote(){
-    api.post("notes/", { author: "Add author name here!", text: "Click here and edit the text!", title: "Add title name here!", createdAt: new Date, updatedAt: new Date}).then(res =>{
+    api.post("notes/", { author: "Add author name here!", text: "Click here and edit the text!", title: "Add title name here!", createdAt: new Date(), updatedAt: new Date()}).then(res =>{
       this.updateList();
     });
   }
@@ -62,8 +62,8 @@ class App extends Component{
           <div className="toolbar">
             <div className="app-title">React Notepad</div>
             <div className="app-options">
-              <a onClick={this.createNote.bind(this)}>New Notepad</a>
-              <a href="https://github.com/BreakinAnt/react_notepad">Source Code</a>
+              <div onClick={this.createNote.bind(this)}>New Notepad</div>
+              <div href="https://github.com/BreakinAnt/react_notepad">Source Code</div>
             </div>
           </div>
         </header>

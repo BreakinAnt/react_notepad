@@ -24,7 +24,7 @@ app.use(routes);
 
 sequelize.sync()
     .then(res => {
-        app.listen(cfg.serverPort);
-        console.log(`Server listening on port ${cfg.serverPort}`)
+        app.listen(process.env.PORT || cfg.serverPort);
+        console.log(`Server listening on port ${process.env.PORT || cfg.serverPort}`)
     })
     .catch(err => console.log(err));

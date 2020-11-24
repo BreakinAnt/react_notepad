@@ -3,9 +3,12 @@ const Note = require('../models/note');
 exports.getNote = (req, res, next) => {
     Note.findByPk(req.params.noteId)
         .then(note => {
-            res.send(note.dataValues);
+            if(note){
+                return res.send(note.dataValues);
+            }
+            return res.send("No notes available");
         }).catch(err => {
-            res.send("An error has occurred.");
+            res.sendStatus(400);
             console.log(err);
         });
 }
