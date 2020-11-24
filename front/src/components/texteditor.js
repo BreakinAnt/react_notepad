@@ -8,7 +8,7 @@ class Texteditor extends Component{
         super(props);
         this.state = {
             currentStyle: "none",
-            note: []
+            note: false
         };
     }
 
@@ -19,7 +19,7 @@ class Texteditor extends Component{
             });
         }
         if(prevProps.editorShow !== this.props.editorShow){
-            if(this.props.fetchedNote){
+            if(this.props.fetchedNote.text){
                 this.setState({currentStyle: "block"})
             }
         }
@@ -82,9 +82,9 @@ class Texteditor extends Component{
         const hasNote = () => {
                 if(this.state.note){
                     return <React.Fragment>
-                        <input type="text" id="text-title" name="text-title"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} defaultValue={this.state.note.title}></input>
-                        <textarea rows="10" cols="30" id="text-note" name="text-note" form="editor-form" defaultValue={this.state.note.text} onChange={e => this.onTodoChange(e.target.name, e.target.value)}></textarea>
-                        <input type="text" id="text-author" name="text-author"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} defaultValue={this.state.note.author}></input>
+                        <input type="text" id="text-title" name="text-title"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} value={this.state.note.title}></input>
+                        <textarea rows="10" cols="30" id="text-note" name="text-note" form="editor-form" value={this.state.note.text} onChange={e => this.onTodoChange(e.target.name, e.target.value)}></textarea>
+                        <input type="text" id="text-author" name="text-author"  onChange={e => this.onTodoChange(e.target.name, e.target.value)} value={this.state.note.author}></input>
                     </React.Fragment>
                 }
                 return <React.Fragment></React.Fragment>
