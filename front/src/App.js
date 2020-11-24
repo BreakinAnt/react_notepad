@@ -30,7 +30,7 @@ class App extends Component{
 
   updateList(){
     api.get("notes/").then(res => {
-      this.setState({list: res.data, selectedNote: []});
+      this.setState({list: res.data});
     }).catch(err => console.log(err));
   }
 
